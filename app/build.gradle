@@ -27,4 +27,14 @@ dependencies {
 	compile 'com.android.support:appcompat-v7:26.+'
 	compile 'com.android.support.constraint:constraint-layout:1.0.2'
 	testCompile 'junit:junit:4.12'
+
+	//log choose
+	compile 'com.blankj:alog:1.6.0'
+	compile 'com.elvishew:xlog:1.4.0'
+	compile 'com.github.zhaokaiqiang.klog:library:1.6.0'
+	compile 'com.github.tianzhijiexian:logger:1.2.1'
+
+	compile 'com.jakewharton:butterknife:8.7.0'
+	annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+	compile 'com.alibaba:fastjson:1.1.67.android'
 }
