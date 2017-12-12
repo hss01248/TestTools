@@ -12,7 +12,7 @@ import com.orhanobut.logger.Logger;
  */
 public class MyLog {
 
-    private   static boolean DEBUG = true;
+    private   static boolean DEBUG = false;
 
     public static void init(boolean isDebug){
         DEBUG  = isDebug;

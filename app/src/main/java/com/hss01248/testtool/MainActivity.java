@@ -33,8 +33,15 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         initData();
+        //LogcatViewer.showLogcatLoggerView(this);
 
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //LogcatViewer.closeLogcatLoggerView(this);
     }
 
     private void initData() {
