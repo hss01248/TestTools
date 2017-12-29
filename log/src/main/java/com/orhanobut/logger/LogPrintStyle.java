@@ -9,13 +9,13 @@ import android.support.annotation.NonNull;
 
 public class LogPrintStyle extends PrintStyle {
 
-    private static final String PREFIX_BORDER = "║ ";
+    private static final String PREFIX_BORDER = "│ ";
 
     private StringBuilder sb = new StringBuilder();
 
     @Override
     public String beforePrint() {
-        return null;
+        return "┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
     }
 
     @NonNull
@@ -23,7 +23,7 @@ public class LogPrintStyle extends PrintStyle {
     public String printLog(String message, int line, int wholeCount) {
         if (line == wholeCount - 1) {
             // last line
-            return "╚ " + message + getTail();
+            return "│ " + message + getTail();
         } else {
             return PREFIX_BORDER + message;
         }
@@ -31,7 +31,7 @@ public class LogPrintStyle extends PrintStyle {
 
     @Override
     public String afterPrint() {
-        return null;
+        return "└────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
     }
 
     /**
@@ -53,7 +53,10 @@ public class LogPrintStyle extends PrintStyle {
         } else {
             sb.setLength(0);
         }
-
+        sb.append("\n");
+        sb.append("├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄");
+        sb.append("\n");
+        sb.append(PREFIX_BORDER);
         sb.append(String.format(" ==> %s(%s:%s)",
                 stack.getMethodName(),
                 stack.getFileName(),
