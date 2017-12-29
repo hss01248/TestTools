@@ -13,6 +13,10 @@ import com.orhanobut.logger.LogPrintStyle;
 import com.orhanobut.logger.Logger;
 import com.socks.library.KLog;
 
+import org.mym.plog.DebugPrinter;
+import org.mym.plog.PLog;
+import org.mym.plog.config.PLogConfig;
+
 /**
  * by huangshuisheng
  */
@@ -25,8 +29,23 @@ public class LogTest {
         initKLog();
         initALog(context);
         initLogger();
+        initPlog();
 
 
+    }
+
+    private static void initPlog() {
+        PLog.init(new PLogConfig.Builder()
+//                .emptyMsgLevel(Log.INFO)
+            .forceConcatGlobalTag(true)
+            .useAutoTag(true)
+            .needThreadInfo(true)
+            .needLineNumber(true)
+            .globalTag("plog")
+            .globalStackOffset(1)
+            .build());
+
+        PLog.prepare(new DebugPrinter(true));
     }
 
     /**
@@ -158,6 +177,7 @@ public class LogTest {
            KLog.json(obj);
             Logger.json(obj);
             XLog.json(TextUtils.isEmpty(obj)?"":obj);
+            PLog.objects(obj);
         }
     }
     public static void xml(String xml){
@@ -171,6 +191,7 @@ public class LogTest {
             KLog.e(obj);
             Logger.object(obj);
             XLog.d(obj==null? "null" :obj);
+            PLog.objects(obj);
 
 
         }

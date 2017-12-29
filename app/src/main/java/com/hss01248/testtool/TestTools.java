@@ -39,7 +39,7 @@ public class TestTools {
 
             openStickModeIfIsDebug();
             initStetho();
-            MyLog.init(DEBUG);
+            //MyLog.init(DEBUG);
             showLogcat();
             initLeakcanary();
 
