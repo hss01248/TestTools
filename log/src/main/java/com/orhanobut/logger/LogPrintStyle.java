@@ -19,7 +19,6 @@ public class LogPrintStyle extends PrintStyle {
     }
 
     /**
-     *  /**
      * ==> onCreate(MainActivity.java:827) Thread:main
      */
     @Override
@@ -28,9 +27,12 @@ public class LogPrintStyle extends PrintStyle {
             return "";
         }
 
-        int index = Logger.STACK_OFFSET + getSettings().methodOffset + 1;
+        int index = Logger.STACK_OFFSET + getSettings().methodOffset ;
         if (getPrinter().isCustomTag()) {
             index -= 2;
+        }
+        if(Logger.isTagJson){
+            index++;
         }
         final StackTraceElement stack = Thread.currentThread().getStackTrace()[index];
 
@@ -54,6 +56,7 @@ public class LogPrintStyle extends PrintStyle {
             sb.append(" Thread: ").append(Thread.currentThread().getName()); // Thread:main
         }
         return sb.toString();
+
     }
 
     @NonNull
@@ -73,5 +76,7 @@ public class LogPrintStyle extends PrintStyle {
     public String afterPrint() {
         return "└────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
     }
+
+
 
 }

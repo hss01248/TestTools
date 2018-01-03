@@ -20,6 +20,8 @@ public class Logger {
 
     private static LogPrinter printer;
 
+    public static volatile boolean isTagJson = false;
+
     // @formatter:off
     protected Logger() {}
     // @formatter:on
@@ -117,7 +119,10 @@ public class Logger {
     }
 
     public static void json(String json,String tag) {
-        Timber.tag(tag).i(XmlJsonParser.json(json));
+        String str = XmlJsonParser.json(json);
+        isTagJson = true;
+        Timber.tag(tag).i(str);
+        isTagJson = false;
     }
 
     /**
@@ -138,7 +143,10 @@ public class Logger {
         Timber.i(ObjParser.parseObj(object));
     }
     public static void object(String tag,Object object) {
-        Timber.tag(tag).i(ObjParser.parseObj(object));
+        String str = ObjParser.parseObj(object);
+        isTagJson = true;
+        Timber.tag(tag).i(str);
+        isTagJson = false;
     }
 
     /**
