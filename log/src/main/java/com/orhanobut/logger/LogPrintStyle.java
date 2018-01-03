@@ -18,33 +18,12 @@ public class LogPrintStyle extends PrintStyle {
         return "┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
     }
 
-    @Override
-    protected String printStackAndThread() {
-        return getTail();
-    }
-
-    @NonNull
-    @Override
-    public String printLog(String message, int line, int wholeCount) {
-       /* if (line == wholeCount - 1) {
-            // last line
-            return "│ " + message + getTail();
-        } else {
-            return PREFIX_BORDER + message;
-        }*/
-
-        return PREFIX_BORDER + message;
-    }
-
-    @Override
-    public String afterPrint() {
-        return "└────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
-    }
-
     /**
+     *  /**
      * ==> onCreate(MainActivity.java:827) Thread:main
      */
-    private String getTail() {
+    @Override
+    protected String printStackAndThread() {
         if (!getSettings().showMethodLink) {
             return "";
         }
@@ -75,6 +54,24 @@ public class LogPrintStyle extends PrintStyle {
             sb.append(" Thread: ").append(Thread.currentThread().getName()); // Thread:main
         }
         return sb.toString();
+    }
+
+    @NonNull
+    @Override
+    public String printLog(String message, int line, int wholeCount) {
+       /* if (line == wholeCount - 1) {
+            // last line
+            return "│ " + message + getTail();
+        } else {
+            return PREFIX_BORDER + message;
+        }*/
+
+        return PREFIX_BORDER + message;
+    }
+
+    @Override
+    public String afterPrint() {
+        return "└────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
     }
 
 }
