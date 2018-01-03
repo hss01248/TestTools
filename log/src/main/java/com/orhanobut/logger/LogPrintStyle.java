@@ -11,22 +11,29 @@ public class LogPrintStyle extends PrintStyle {
 
     private static final String PREFIX_BORDER = "│ ";
 
-    private StringBuilder sb = new StringBuilder();
+    private StringBuilder sb = new StringBuilder(64);
 
     @Override
     public String beforePrint() {
         return "┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
     }
 
+    @Override
+    protected String printStackAndThread() {
+        return getTail();
+    }
+
     @NonNull
     @Override
     public String printLog(String message, int line, int wholeCount) {
-        if (line == wholeCount - 1) {
+       /* if (line == wholeCount - 1) {
             // last line
             return "│ " + message + getTail();
         } else {
             return PREFIX_BORDER + message;
-        }
+        }*/
+
+        return PREFIX_BORDER + message;
     }
 
     @Override
@@ -48,19 +55,21 @@ public class LogPrintStyle extends PrintStyle {
         }
         final StackTraceElement stack = Thread.currentThread().getStackTrace()[index];
 
-        if (sb.length() < 0) {
+       /* if (sb.length() < 0) {
             sb = new StringBuilder();
         } else {
             sb.setLength(0);
-        }
-        sb.append("\n");
+        }*/
+        sb = new StringBuilder(64);
+       /* sb.append("\n");
         sb.append("├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄");
-        sb.append("\n");
+        sb.append("\n");*/
         sb.append(PREFIX_BORDER);
-        sb.append(String.format(" ==> %s(%s:%s)",
-                stack.getMethodName(),
-                stack.getFileName(),
-                stack.getLineNumber()));
+        String info = String.format(" ────> %s(%s:%s)",
+            stack.getMethodName(),
+            stack.getFileName(),
+            stack.getLineNumber());
+        sb.append(info);
 
         if (getSettings().showThreadInfo) {
             sb.append(" Thread: ").append(Thread.currentThread().getName()); // Thread:main

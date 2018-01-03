@@ -60,7 +60,7 @@ public class ObjParser {
                             flag++ < collection.size() - 1 ? ",\n" : "\n");
                 }
             }
-            return msg + "\n]";
+            return msg + "]";
         } else if (object instanceof Map) {
             String msg = simpleName + " {\n";
             Map map = (Map) object;

@@ -61,9 +61,17 @@ public final class LogPrinter extends Timber.DebugTree {
      */
     @Override
     protected void log(int priority, String tag, @NonNull String message, Throwable ignored) {
-        if (style.beforePrint() != null) {
-            super.log(priority, tag, style.beforePrint(), null);
+        String before = style.beforePrint();
+        if (before != null) {
+            super.log(priority, tag, before, null);
         }
+
+        String stackAndThread = style.printStackAndThread();
+        if(stackAndThread !=null){
+            super.log(priority, tag, stackAndThread, null);
+        }
+
+        super.log(priority, tag, "├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄", null);
 
         String[] lines = message.split(PROPERTY);
         for (int i = 0, length = lines.length; i < length; i++) {

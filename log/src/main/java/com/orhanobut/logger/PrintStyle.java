@@ -19,6 +19,8 @@ public abstract class PrintStyle {
     @Nullable
     protected abstract String beforePrint();
 
+    protected abstract String printStackAndThread();
+
     @NonNull
     protected abstract String printLog(String message, int line, int wholeLineCount);
 
