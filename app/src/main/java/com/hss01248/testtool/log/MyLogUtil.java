@@ -22,7 +22,7 @@ public class MyLogUtil {
                 .showMethodLink(true)
                 .showThreadInfo(true)
                 .tagPrefix("")
-                .globalTag("akulaku")
+                .globalTag("dsfd")
                 .methodOffset(1)
                 .logPriority(DEBUG ? Log.VERBOSE : Log.ASSERT)
                 .build());
