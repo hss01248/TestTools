@@ -41,6 +41,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:26.1.0"
+    implementation "com.android.support:design:26.1.0"
+    implementation "com.android.support:recyclerview-v7:26.1.0"
 
     api('me.ele:uetool:1.0.15') {
         exclude group: 'com.android.support'
@@ -53,6 +55,18 @@ dependencies {
     }
 
     api( 'com.facebook.stetho:stetho-okhttp3:1.5.0'){
+        exclude group: 'com.android.support'
+    }
+
+    api('com.github.hss01248.chuck:library:1.1.1'){
+        exclude group: 'com.android.support'
+    }
+
+    api('com.github.hss01248:Mylog:1.0.2'){
+        exclude group: 'com.android.support'
+    }
+
+    api ('com.github.hss01248:Toasty:2.0.6'){
         exclude group: 'com.android.support'
     }
 

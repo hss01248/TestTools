@@ -8,6 +8,7 @@ import android.os.StrictMode;
 import android.os.Trace;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
+import com.readystatesoftware.chuck.ChuckInterceptor;
 import com.squareup.leakcanary.LeakCanary;
 import okhttp3.OkHttpClient;
 
@@ -43,33 +44,42 @@ public class TestTool {
     public static void init(Application app,boolean isDebug,boolean openLeakCanary){
         TestTool.context = app;
         TestTool.isDebug = isDebug;
-        if(isDebug){
-            app.registerActivityLifecycleCallbacks(new TestToolLifeCycleCallback());
-            if(openLeakCanary){
-                LeakCanary.install(app);
-            }
-
-            //Stetho.initializeWithDefaults(app);
-            Stetho.initialize(Stetho.newInitializerBuilder(context)
-                    .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(context))
-                    .build());
-
-            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                    .detectAll()//开启所有的detectXX系列方法
-                    //.penaltyDialog()//弹出违规提示框
-                    .penaltyLog()//在Logcat中打印违规日志
-                    .build());
-
-            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .build());
+        if(!isDebug){
+            return;
         }
+
+        app.registerActivityLifecycleCallbacks(new TestToolLifeCycleCallback());
+        if(openLeakCanary){
+            LeakCanary.install(app);
+        }
+
+        //Stetho.initializeWithDefaults(app);
+        Stetho.initialize(Stetho.newInitializerBuilder(context)
+                .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(context))
+                .build());
+
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .detectAll()//开启所有的detectXX系列方法
+                //.penaltyDialog()//弹出违规提示框
+                .penaltyLog()//在Logcat中打印违规日志
+                .build());
+
+        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                .detectAll()
+                .penaltyLog()
+                .build());
+
     }
 
     public static void addStethoInterceptorForOkhttp(OkHttpClient.Builder builder){
         if(isDebug){
             builder.addNetworkInterceptor(new StethoInterceptor());
+        }
+    }
+
+    public static void addChuckInterceptorForOkhttp(OkHttpClient.Builder builder){
+        if(isDebug){
+            builder.addNetworkInterceptor(new ChuckInterceptor(context));
         }
     }
 

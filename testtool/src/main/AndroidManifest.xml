@@ -1,2 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.hss01248.testtool"/>
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.hss01248.testtool">
+    <uses-sdk tools:overrideLibrary="com.readystatesoftware.chuck"/>
+</manifest>
+

@@ -41,6 +41,12 @@ public class TestTool {
 
     }
 
+    public static void addChuckInterceptorForOkhttp(OkHttpClient.Builder builder){
+        if(isDebug){
+            builder.addNetworkInterceptor(new ChuckInterceptor(context));
+        }
+    }
+
     /**
      * 控制Method Trace开始
      * 需要debug包
