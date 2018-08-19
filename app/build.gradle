@@ -24,7 +24,7 @@ dependencies {
 	androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
 		exclude group: 'com.android.support', module: 'support-annotations'
 	})
-	//compile 'com.android.support:appcompat-v7:26.+'
+	compile 'com.android.support:appcompat-v7:26.1.0'
 	compile 'com.android.support.constraint:constraint-layout:1.0.2'
 	testCompile 'junit:junit:4.12'
 	//log choose
@@ -51,5 +51,7 @@ dependencies {
 	releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 	//toast
 	//compile 'com.github.hss01248:Toasty:2.0.5'
-	implementation project(':log')
+	//implementation project(':log')
+	compile project(path: ':testtool')
+	compile 'com.github.hss01248:Mylog:1.0.2'
 }

@@ -2,25 +2,17 @@ package com.hss01248.testtool.log;
 
 import android.text.TextUtils;
 import android.util.Log;
+import com.orhanobut.logger.MyLog;
+import okhttp3.*;
+import okhttp3.internal.http.HttpHeaders;
+import okio.Buffer;
+import okio.BufferedSource;
 
 import java.io.EOFException;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.UnsupportedCharsetException;
 import java.util.concurrent.TimeUnit;
-
-import okhttp3.Connection;
-import okhttp3.Headers;
-import okhttp3.Interceptor;
-import okhttp3.MediaType;
-import okhttp3.Protocol;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
-import okhttp3.internal.http.HttpHeaders;
-import okio.Buffer;
-import okio.BufferedSource;
 
 /**
  * Created by huangshuisheng on 2017/12/25.
@@ -117,9 +109,9 @@ public final class HttpLoggingInterceptorM implements Interceptor {
                 }
 
                 if(str.startsWith("{") && str.endsWith("}")){
-                    MyLogUtil.json(TAG,str);
+                    MyLog.json(TAG,str);
                 }else if(str.startsWith("[") && str.endsWith("]")){
-                    MyLogUtil.json(TAG,str);
+                    MyLog.json(TAG,str);
                 }
 
 

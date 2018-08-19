@@ -3,16 +3,14 @@ package com.hss01248.testtool;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,22 +65,22 @@ public class MainActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.json:
-                LogTest.json(json);
+                //LogTest.json(json);
                 break;
             case R.id.array:
-                LogTest.obj(arr);
+                //LogTest.obj(arr);
                 break;
             case R.id.list:
-                LogTest.obj(list);
+               // LogTest.obj(list);
                 break;
             case R.id.map:
-                LogTest.obj(map);
+               // LogTest.obj(map);
                 break;
             case R.id.activity:
-                LogTest.obj(this);
+               // LogTest.obj(this);
                 break;
             case R.id.javabean:
-                LogTest.obj(responseBean);
+               // LogTest.obj(responseBean);
                 break;
                 default:break;
         }

@@ -1,0 +1,62 @@
+apply plugin: 'com.android.library'
+
+
+
+android {
+    compileSdkVersion 26
+
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+
+        debug {
+
+        }
+
+        common {
+            minifyEnabled false
+        }
+
+        debugReleaseUrl {
+            minifyEnabled false
+        }
+
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:26.1.0"
+
+    api('me.ele:uetool:1.0.15') {
+        exclude group: 'com.android.support'
+    }
+    api( 'com.squareup.leakcanary:leakcanary-android:1.6.1'){
+        exclude group: 'com.android.support'
+    }
+    api( 'com.facebook.stetho:stetho:1.5.0'){
+        exclude group: 'com.android.support'
+    }
+
+    api( 'com.facebook.stetho:stetho-okhttp3:1.5.0'){
+        exclude group: 'com.android.support'
+    }
+
+}
+
+
+
