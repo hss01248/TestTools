@@ -47,7 +47,8 @@ dependencies {
 	compile 'com.github.fatangare.LogcatViewer:logcatviewer:v1.0'
 	//LogcatViewer
 	compile 'com.github.pedrovgs:lynx:1.1.0'
-	compile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+	debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+	releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 	//toast
 	//compile 'com.github.hss01248:Toasty:2.0.5'
 	implementation project(':log')
