@@ -6,6 +6,7 @@ import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.alibaba.fastjson.JSON;
+import com.orhanobut.logger.MyLog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -66,21 +67,23 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.json:
                 //LogTest.json(json);
+                MyLog.json(json);
                 break;
             case R.id.array:
-                //LogTest.obj(arr);
+               MyLog.obj(arr);
+
                 break;
             case R.id.list:
-               // LogTest.obj(list);
+               MyLog.obj(list);
                 break;
             case R.id.map:
-               // LogTest.obj(map);
+               MyLog.obj(map);
                 break;
             case R.id.activity:
-               // LogTest.obj(this);
+               MyLog.obj(this);
                 break;
             case R.id.javabean:
-               // LogTest.obj(responseBean);
+               MyLog.obj(responseBean);
                 break;
                 default:break;
         }

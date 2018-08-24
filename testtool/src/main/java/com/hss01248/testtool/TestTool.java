@@ -10,6 +10,7 @@ import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.readystatesoftware.chuck.ChuckInterceptor;
 import com.squareup.leakcanary.LeakCanary;
+import me.ele.uetool.UETool;
 import okhttp3.OkHttpClient;
 
 /**
@@ -48,7 +49,7 @@ public class TestTool {
             return;
         }
 
-        app.registerActivityLifecycleCallbacks(new TestToolLifeCycleCallback());
+        UETool.init(app);
         if(openLeakCanary){
             LeakCanary.install(app);
         }
