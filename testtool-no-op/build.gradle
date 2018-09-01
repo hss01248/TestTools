@@ -47,7 +47,7 @@ dependencies {
     }
 
     //log和chuck在release时可能也会用到,比如用于开后门
-    api('com.github.hss01248.chuck:library:1.1.1'){
+    api('com.github.hss01248.chuck:library:1.1.2'){
         exclude group: 'com.android.support'
     }
 
