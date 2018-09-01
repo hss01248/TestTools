@@ -5,6 +5,9 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Debug;
 import android.os.Trace;
+
+import com.readystatesoftware.chuck.ChuckInterceptor;
+
 import okhttp3.OkHttpClient;
 
 /**
