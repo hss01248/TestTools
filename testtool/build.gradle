@@ -62,7 +62,7 @@ dependencies {
         exclude group: 'com.android.support'
     }
 
-    api('com.github.hss01248:Mylog:1.0.2'){
+    api('com.github.hss01248:Mylog:1.0.3'){
         exclude group: 'com.android.support'
     }
 

@@ -14,7 +14,7 @@ public class BaseApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        MyLog.init(true, "mylog", new IJsonToStr() {
+        MyLog.init(true, "mylog", 1,new IJsonToStr() {
             @Override
             public String toStr(Object o) {
                 return JSON.toJSONString(o);
